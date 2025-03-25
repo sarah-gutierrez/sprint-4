@@ -22,6 +22,7 @@ Version History
 0.2 2025-24-03: 
 - Removed atlair and scipy packages from requirements.txt. 
 - README.md: More information provided on repository and instructions.
+- EDA jupyter: Additional commentary and titles added.
 
 0.1 2025-24-03: 
 - Initial issue
