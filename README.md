@@ -18,7 +18,7 @@ App.py for main program. Jupyter notebook for full EDA (file EDA.ipynb).
 Project link: https://github.com/sarah-gutierrez/sprint-4
 Render link can also be accessed at https://sprint-4-1-1ot0.onrender.com/
 
-Version History 
+# Version History 
 0.2 2025-24-03: 
 - Removed atlair and scipy packages from requirements.txt. 
 - README.md: More information provided on repository and instructions.
