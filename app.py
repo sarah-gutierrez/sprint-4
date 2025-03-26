@@ -45,30 +45,28 @@ filtered_df = df[(df['model_year'] >= lower_bound_model_year) &
 
 #To ensure informative visualizations, outliers were identified and removed. This helps the reliability of data trends in the analysi. Scatterplot before for Model Year Vs. Price with outliers removed is shown below.
 
-fig1 = px.histogram(filtered_df , x='price', title='Price Distribution - Outliers Filtered Out', labels={'price': 'Price (USD)'})
-fig1.show()
+# Sample data for context
+df = pd.DataFrame({
+    'days_listed': [10, 20, 30, 40],
+    'price': [2000, 3000, 1500, 3500],
+    'fuel': ['gas', 'diesel', 'gas', 'electric'],
+    'model_year': [2005, 2010, 2015, 2020]
+})
 
-#Check all types of available fuel options
-print(df['fuel'].unique())
-
-#Scatterplot of price data vs days listed
-fig_scatter = px.scatter(df, x='days_listed', y='price', title='Price (Outliers Removed) vs. Days Listed', labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)' })
-fig_scatter.show()
-
-#Scatterplot with outliers removed for price
-fig_scatter2 = px.scatter(filtered_df, x='model_year', y='price', title='Model Year vs Price (Outliers Removed)', labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)' })
-fig_scatter2.show()
-
-# Checkbox for fuel type
+# Define filtered_df based on checkbox
 if st.checkbox('Show only gas fuel type'):
-    filtered_df_gas = df[df['fuel'] == 'gas']
+    filtered_df = df[df['fuel'] == 'gas']
 else:
     filtered_df = df
+
+# Scatterplot of price data vs days listed
+fig_scatter1 = px.scatter(filtered_df, x='days_listed', y='price', title='Price vs Days Listed')
+st.plotly_chart(fig_scatter1)
+
+# Scatterplot of model year vs price (with whatever filtering/adjustments you need)
+fig_scatter2 = px.scatter(filtered_df, x='model_year', y='price', title='Model Year vs Price')
+st.plotly_chart(fig_scatter2)
 
 # Add a plotly histogram for price distribution
 fig_hist = px.histogram(filtered_df, x='price', title='Price Distribution')
 st.plotly_chart(fig_hist)
-
-# Scatterplot of price data vs days listed
-fig_scatter = px.scatter(filtered_df, x='days_listed', y='price', title='Price vs Days Listed')
-st.plotly_chart(fig_scatter)
