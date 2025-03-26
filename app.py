@@ -45,29 +45,27 @@ filtered_df = df[(df['model_year'] >= lower_bound_model_year) &
 
 #To ensure informative visualizations, outliers were identified and removed. This helps the reliability of data trends in the analysi. Scatterplot before for Model Year Vs. Price with outliers removed is shown below.
 
-# Sample data for context
-df = pd.DataFrame({
-    'days_listed': [10, 20, 30, 40],
-    'price': [2000, 3000, 1500, 3500],
-    'fuel': ['gas', 'diesel', 'gas', 'electric'],
-    'model_year': [2005, 2010, 2015, 2020]
-})
+# Fuel type selection
+fuel_options = df['fuel'].unique()  # Get unique fuel types
+selected_fuels = st.multiselect("Select Fuel Types:", options=fuel_options, default=fuel_options)
 
-# Define filtered_df based on checkbox
-if st.checkbox('Show only gas fuel type'):
-    filtered_df = df[df['fuel'] == 'gas']
-else:
-    filtered_df = df
+# Filter dataframe based on selected fuel types
+filtered_df = filtered_df[filtered_df['fuel'].isin(selected_fuels)]
 
-# Scatterplot of price data vs days listed
-fig_scatter1 = px.scatter(filtered_df, x='days_listed', y='price', title='Price (Outliers Removed) vs. Days Listed', labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)' })
+# Scatterplot: Price vs Days Listed
+fig_scatter1 = px.scatter(filtered_df, x='days_listed', y='price', 
+                          title='Price (Outliers Removed) vs. Days Listed', 
+                          labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)'})
 st.plotly_chart(fig_scatter1)
 
-# Scatterplot of model year vs price
-fig_scatter2 = px.scatter(filtered_df, x='model_year', y='price', title='Model Year vs Price (Outliers Removed)', labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)' })
+# Scatterplot: Model Year vs Price
+fig_scatter2 = px.scatter(filtered_df, x='model_year', y='price', 
+                          title='Model Year vs Price (Outliers Removed)', 
+                          labels={'model_year': 'Model Year', 'price': 'Price (USD)'})
 st.plotly_chart(fig_scatter2)
 
-# Add a plotly histogram for price distribution
-fig_hist = px.histogram(filtered_df, x='price', title='Price Distribution - Outliers Filtered Out', labels={'price': 'Price (USD)'})
+# Histogram: Price Distribution
+fig_hist = px.histogram(filtered_df, x='price', 
+                        title='Price Distribution - Outliers Filtered Out', 
+                        labels={'price': 'Price (USD)'})
 st.plotly_chart(fig_hist)
-
