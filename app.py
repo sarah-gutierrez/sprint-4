@@ -57,8 +57,8 @@ fig_scatter1 = px.scatter(filtered_df, x='days_listed', y='price',
                           title='Price (Outliers Removed) vs. Days Listed', 
                           labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)'})
 
-# Set y-axis limit (e.g., max price is 60,000)
-fig_scatter1.update_layout(yaxis=dict(range=[0, 50000]))
+# Set y-axis limit (e.g., max price is 40,000). Top edge of data appears to be cut out but this is due to outliers. Increase max of y-axis to improve visibility that plot itself is not cut off.
+fig_scatter1.update_layout(yaxis=dict(range=[0, 40000]))
 
 st.plotly_chart(fig_scatter1)
 
