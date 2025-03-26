@@ -60,13 +60,14 @@ else:
     filtered_df = df
 
 # Scatterplot of price data vs days listed
-fig_scatter1 = px.scatter(filtered_df, x='days_listed', y='price', title='Price vs Days Listed')
+fig_scatter1 = px.scatter(filtered_df, x='days_listed', y='price', title='Price (Outliers Removed) vs. Days Listed', labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)' })
 st.plotly_chart(fig_scatter1)
 
-# Scatterplot of model year vs price (with whatever filtering/adjustments you need)
-fig_scatter2 = px.scatter(filtered_df, x='model_year', y='price', title='Model Year vs Price')
+# Scatterplot of model year vs price
+fig_scatter2 = px.scatter(filtered_df, x='model_year', y='price', title='Model Year vs Price (Outliers Removed)', labels={'days_listed': 'Number of Days Listed on Ad', 'price': 'Price (USD)' })
 st.plotly_chart(fig_scatter2)
 
 # Add a plotly histogram for price distribution
-fig_hist = px.histogram(filtered_df, x='price', title='Price Distribution')
+fig_hist = px.histogram(filtered_df, x='price', title='Price Distribution - Outliers Filtered Out', labels={'price': 'Price (USD)'})
 st.plotly_chart(fig_hist)
+
