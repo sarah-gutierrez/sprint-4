@@ -5,6 +5,10 @@ import plotly.express as px
 df = pd.read_csv('vehicles_us.csv')
 st.header('Car Sales Advertisements Dashboard')
 
+st.write('This project provides data analysis of car sales advertisements. This includes car type, days listed, price, odometer data, fuel type, etc. This is a tool to help simulate random events.') 
+st.write('Outliers were filtered out from price and model year using the IQR method. This was to ensure improved visibility and reliability of data trends.')
+
+
 #Pre-processing: Missing Values and Duplicates
 # Missing values
 print(df.isna().sum())
