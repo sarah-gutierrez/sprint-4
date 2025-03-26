@@ -8,6 +8,7 @@ st.header('Car Sales Advertisements Dashboard')
 st.write('This project provides data analysis of car sales advertisements. This includes car type, days listed, price, odometer data, fuel type, etc. This is a tool to help simulate random events.') 
 st.write('Outliers were filtered out from price and model year using the IQR method. This was to ensure improved visibility and reliability of data trends.')
 
+st.write('INSTRUCTIONS: Use checkboxes below filter by fuel type on the plots provided below.')
 
 #Pre-processing: Missing Values and Duplicates
 # Missing values
@@ -77,3 +78,5 @@ fig_hist = px.histogram(filtered_df, x='price',
                         title='Price Distribution - Outliers Filtered Out', 
                         labels={'price': 'Price (USD)'})
 st.plotly_chart(fig_hist)
+
+st.write('The plot visually suggests that the gas type cars are lead the overall plot to be right-skewed. The remaining fuel types are more normally distributed. This may be because of the wide universality of gas cars, including highly expensive options on the market.')
