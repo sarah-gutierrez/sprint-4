@@ -19,6 +19,10 @@ Project link: https://github.com/sarah-gutierrez/sprint-4
 Render link can also be accessed at https://sprint-4-1-1ot0.onrender.com/
 
 # Version History 
+0.3 2025-03-25:
+- Additional data preprocessing performed to handle outliers and missing data.
+- Additional interactive features to rendering and comments added to both jupyter and app.py.
+
 0.2 2025-24-03: 
 - Removed atlair and scipy packages from requirements.txt. 
 - README.md: More information provided on repository and instructions.
